@@ -18,7 +18,7 @@ jobs:
 
       - name: Extract SADO ZIP
         run: |
-          unzip -0
+          unzip -o
           "SADO-Music-Platform-NO-DEMO-AUDIO-V3.zip"-d sado-extracted 
           cp -r sado-extracted/* .
           rm -rf sado-extracted

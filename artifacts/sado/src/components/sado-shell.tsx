@@ -98,7 +98,7 @@ export function SadoProvider({ children }: { children: ReactNode }) {
   }, [themeDark]);
   useEffect(() => {
     if (!currentTrack) return;
-    const audio = audioRef.current || new Audio();
+    const audio = new Audio();
     audioRef.current = audio;
     audio.pause();
     setPlayerStatus('loading');

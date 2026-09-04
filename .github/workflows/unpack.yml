@@ -1,0 +1,32 @@
+name: Extract SADO project
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract SADO ZIP
+        run: |
+          unzip -o "SADO-Music-Platform-UMID-CREATORS.zip" -d sado-extracted
+          cp -r sado-extracted/* .
+          rm -rf sado-extracted
+          rm -f "SADO-Music-Platform-UMID-CREATORS.zip"
+
+      - name: Commit extracted project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Extract SADO project"
+          git push

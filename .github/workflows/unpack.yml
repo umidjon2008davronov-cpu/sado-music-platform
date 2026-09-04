@@ -31,3 +31,5 @@ jobs:
           git add -A
           git diff --cached --quiet || git commit -m "Extract SADO project"
           git push
+unzip -o
+"SADO-Music-Platform-NO-DEMO-AUDIO-V3.zip" -d sado-extracted

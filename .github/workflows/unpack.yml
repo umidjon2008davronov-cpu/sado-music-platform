@@ -18,10 +18,11 @@ jobs:
 
       - name: Extract SADO ZIP
         run: |
-          unzip -o "SADO-Music-Platform-UMID-CREATORS.zip" -d sado-extracted
+          unzip -0
+          "SADO-Music-Platform-NO-DEMO-AUDIO-V3.zip"-d sado-extracted 
           cp -r sado-extracted/* .
           rm -rf sado-extracted
-          rm -f "SADO-Music-Platform-UMID-CREATORS.zip"
+          rm -f "SADO-Music-Platform-NO-DEMO-AUDIO-V3.zip"
 
       - name: Commit extracted project
         run: |

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SADO Music Platform"
+description = "A modern Uzbek-first music platform with responsive discovery, search, library, profile, and a functional demo music player."
+version = "1.0.0"
+id = "artifacts/sado"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19881
+
+[services.development]
+run = "pnpm --filter @workspace/sado run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sado", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/sado/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19881"
+BASE_PATH = "/"
